@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Habitación</title>
+</head>
+<body>
+
+<h1>Eliminar Habitación</h1>
+<p>¿Estás seguro de que deseas eliminar este registro?</p>
+
+<form th:action="@{/habitaciones/borrar}" th:object="${habitacion}" method="post">
+
+    <div>
+        <label for="id">ID:</label><br>
+        <input type="number" id="id" th:field="*{id}" readonly>
+    </div>
+    <br>
+
+    <div>
+        <label for="numero">Número de Habitación:</label><br>
+        <input type="number" id="numero" th:field="*{numero}" readonly>
+    </div>
+    <br>
+
+    <div>
+        <label for="tipo">Tipo:</label><br>
+        <input type="text" id="tipo" th:field="*{tipo}" readonly>
+    </div>
+    <br>
+
+    <div>
+        <label for="precio">Precio:</label><br>
+        <input type="number" id="precio" th:field="*{precio}" readonly>
+    </div>
+    <br>
+
+    <div>
+        <label for="disponible">¿Disponible?</label>
+        <input type="checkbox" id="disponible" th:field="*{disponible}" disabled>
+    </div>
+    <br><br>
+
+    <button type="submit">Eliminar</button>
+    <a th:href="@{/habitaciones}">
+        <button type="button">Cancelar</button>
+    </a>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Habitaciones</title>
+</head>
+<body>
+
+<h1>Administración de Habitaciones</h1>
+
+<a th:href="@{/habitaciones/nuevo}">
+    <button type="button">Agregar nueva habitación</button>
+</a>
+
+<br><br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Número</th>
+        <th>Tipo</th>
+        <th>Precio</th>
+        <th>Disponible</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="habitacion : ${habitaciones}">
+        <td th:text="${habitacion.id}">1</td>
+        <td th:text="${habitacion.numero}">101</td>
+        <td th:text="${habitacion.tipo}">Sencilla</td>
+        <td th:text="${habitacion.precio}">500.00</td>
+        <td th:text="${habitacion.disponible ? 'Sí' : 'No'}">Sí</td>
+        <td>
+            <a th:href="@{/habitaciones/editar/{id}(id=${habitacion.id})}">
+                <button type="button">Editar</button>
+            </a>
+            <a th:href="@{/habitaciones/eliminar/{id}(id=${habitacion.id})}">
+                <button type="button">Eliminar</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
